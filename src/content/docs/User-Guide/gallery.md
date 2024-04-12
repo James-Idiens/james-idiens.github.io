@@ -16,6 +16,6 @@ The LocalMaps Gallery is your central mapping destination! This page outlines ho
 7. **Metadata** - View item information about each application or map
 8. **Secure Content** - Secure items are identified with a small lock symbol. These are only available once logged in
 
-![Gallery Guide](/src/assets/gallery-guide.png)
+![Gallery Guide](../../../assets/gallery-guide.png)
 
 **Additional Links** -  Any additional links and information can be accessed in the bottom footer.
