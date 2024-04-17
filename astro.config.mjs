@@ -15,25 +15,16 @@ export default defineConfig({
         alt: "Alternative text for logo", // Alternative text for accessibility
         replacesTitle: true, // Set to true if you want to hide the site title text and only show the logo
       },
-      // social: {
-      //   github: "https://github.com/withastro/starlight",
-      // },
       sidebar: [
         {
           label: "Admin Guide",
           collapsed: true,
-          items: [
-            { label: "Getting Started", link: "admin-guide/introduction" },
-          ],
+          autogenerate: { directory: "admin-guide" },
         },
         {
           label: "User Guide",
           collapsed: true,
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Getting Started", link: "user-guide/introduction" },
-            { label: "Gallery", link: "user-guide/gallery" },
-          ],
+          autogenerate: { directory: "user-guide" },
         },
       ],
       customCss: ["./src/tailwind.css"],

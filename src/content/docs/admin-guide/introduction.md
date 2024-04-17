@@ -1,8 +1,9 @@
 ---
-title: Admin Guide
+title: Introduction
 description: Introduction to the Admin Guide
+sidebar:
+  order: 1
 ---
-
 
 # Welcome
 
@@ -17,6 +18,7 @@ If your organisation is brand new to LocalMaps, check out the About LocalMaps se
 You can visit each section in the side menu to make the most of this help guide.
 
 Looking for something specific? Use the searchbar above
+
 
 ---
 
