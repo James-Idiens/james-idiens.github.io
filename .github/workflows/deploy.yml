@@ -34,8 +34,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Remove unwanted file
-        run: rm example-template.md
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

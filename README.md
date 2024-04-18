@@ -34,7 +34,7 @@ Static assets, like favicons, can be placed in the `public/` directory.
 
 ## 📄 How to create a documentation page
 
-**A documentation example template to copy is provided at `src/content/docs/example-template.md`. You can copy this template and modify it to create your own documentation pages.**
+**A [documentation example template](#documentation-example-template) to copy is provided at the end of this README**
 
 1. Create a new `.md` file either the `src/content/docs/admin-guide/` or `src/content/docs/user-guide/` directory depending on which guide you are writing for. The file name will be the URL path for the page. If it is multiple words, use kebab-case like `my-documentation-page.md`.
 
@@ -97,3 +97,59 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Check out [Starlight’s docs](https://starlight.astro.build/), or read [the Astro documentation](https://docs.astro.build)
+
+## 📝 Documentation Example Template
+
+Simply copy and paste the following template into an empty `.md` file to get started:
+
+```markdown
+---
+title: Example Template
+description: This is an example template for your documentation.
+sidebar: # Delete this line and 'order' below if you are fine with the document being in alphabetical order in the sidebar.
+  order: 1 # Order in the sidebar (lower is higher up)
+---
+
+# Introduction
+
+Welcome to the documentation! Write your introduction here.
+
+## Getting Started
+
+To get started, follow these steps: 
+
+1. **Step 1** - Do this first
+2. **Step 2** - Do this second
+3. **Step 3** - Do this third
+
+## Another Section
+
+### This is a sub-subheading
+
+Add whatever content you need here.
+
+### This is another sub-subheading
+
+Add whatever content you need here.
+
+## Additional Resources
+
+### Image
+
+![Image Description](../../../assets/your-image.png)
+Replace the your-image with the name of your image in the `src/assets/` directory. Make sure the file extension is correct.
+
+
+### Related Documents
+
+If you want to link to other documents in the documentation, you can do so like this:
+
+- [Link to a another document](/user-guide/gallery/)
+  Replace `/user-guide/gallery/` with the path to the document you want to link to.
+
+### External Links
+
+You can also link to external resources:
+
+- [Link to Google](https://www.google.com)
+```
