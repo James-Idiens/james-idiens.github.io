@@ -10,6 +10,11 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "LocalMaps",
+      components: {
+        // Override the default `SocialIcons` component.
+        SocialIcons: './src/components/DownloadButton.astro',
+      },
+
       logo: {
         src: "./src/assets/localmaps-logo.png", // Path to your logo image
         alt: "Alternative text for logo", // Alternative text for accessibility

@@ -10,13 +10,24 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.5.10",
     "@astrojs/starlight": "^0.21.5",
     "@astrojs/starlight-tailwind": "^2.0.2",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.3.5",
+    "github-markdown-css": "^5.5.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
+    "jspdf-html2canvas": "^1.5.2",
+    "markdown-it": "^14.1.0",
+    "marked": "^12.0.2",
+    "md-to-pdf": "^5.2.4",
+    "puppeteer": "^22.6.5",
     "sharp": "^0.32.5",
     "tailwindcss": "^3.4.1",
-    "@astrojs/check": "^0.5.10",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.0.1"
   }
 }

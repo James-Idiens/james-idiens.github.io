@@ -1,0 +1,39 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+---
+<script>
+// import { fetchAndConvertToPdf } from '../utils/markdownToPdf';
+// const url = "/src/content/docs/user-guide/gallery.md";
+// const downloadButton = document.getElementById("downloadButton");
+// downloadButton!.addEventListener('click', () => fetchAndConvertToPdf(url));
+
+// import { convertMainToPdf } from '../utils/markdownToPdf';
+// const downloadButton = document.getElementById("downloadButton");
+// downloadButton!.addEventListener('click', () => convertMainToPdf());
+import { printMarkdown } from '../utils/openInNewTab.ts';
+const downloadButton = document.getElementById("downloadButton");
+downloadButton!.addEventListener('click', () => printMarkdown('/src/content/docs/user-guide/gallery.md'));
+</script>
+
+<button id="downloadButton" class="bg-indigo-500 text-black">Download</button>
+
+<!-- <script>
+    const fs = require('fs');
+    const { mdToPdf } = require('md-to-pdf');
+    
+    async function convertMarkdownToPdf() {
+      const pdf = await mdToPdf({ path: '/src/content/docs/user-guide/gallery.md' }).catch(console.error);
+    
+      if (pdf) {
+        fs.writeFileSync(pdf.filename, pdf.content);
+      }
+    }
+    
+    // Add event listener to download button
+    document.getElementById('downloadButton')?.addEventListener('click', function() {
+      convertMarkdownToPdf();
+    });
+    </script>
+    
+    <button id="downloadButton" class="bg-indigo-500 text-black">Download</button>
+     -->
