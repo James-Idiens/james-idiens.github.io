@@ -12,10 +12,18 @@ export async function printMarkdown(url: string): Promise<void> {
   // Remove the entire frontmatter and replace it with the title
   markdown = markdown.replace(/---[\s\S]*?---/, title);
   console.log(markdown);
+  // Replace relative image paths with absolute paths
+  const baseUrl = window.location.origin;
+  markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, src) => {
+    // Remove the ../ parts from the path
+    const fixedSrc = src.replace(/(\.\.\/)/g, '');
+    return `![${alt}](${baseUrl}/src/${fixedSrc})`;
+  });
 
   // Convert markdown file to html using markdown-it
   const md = new MarkdownIt();
-  const html = md.render(markdown);
+  let html = md.render(markdown);
+
 
   // Create a new Blob object from the HTML string
   const blob = new Blob([html], { type: "text/html" });
