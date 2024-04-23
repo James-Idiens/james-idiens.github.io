@@ -16,14 +16,30 @@ export async function printMarkdown(url: string): Promise<void> {
   const baseUrl = window.location.origin;
   markdown = markdown.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, src) => {
     // Remove the ../ parts from the path
-    const fixedSrc = src.replace(/(\.\.\/)/g, '');
+    const fixedSrc = src.replace(/(\.\.\/)/g, "");
     return `![${alt}](${baseUrl}/src/${fixedSrc})`;
   });
+
+  console.log(markdown);
 
   // Convert markdown file to html using markdown-it
   const md = new MarkdownIt();
   let html = md.render(markdown);
 
+  // Apply GitHub README styling
+  html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="${baseUrl}/src/styles/github-markdown.css">
+</head>
+<body>
+  <div class="markdown-body">
+    ${html}
+  </div>
+</body>
+</html>
+`;
 
   // Create a new Blob object from the HTML string
   const blob = new Blob([html], { type: "text/html" });

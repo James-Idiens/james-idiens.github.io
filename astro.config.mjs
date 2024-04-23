@@ -8,6 +8,7 @@ export default defineConfig({
   output: "static",
 
   integrations: [
+    
     starlight({
       title: "LocalMaps",
       components: {

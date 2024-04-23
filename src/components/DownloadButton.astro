@@ -1,39 +1,69 @@
 ---
-import type { Props } from '@astrojs/starlight/props';
+import type { Props } from "@astrojs/starlight/props";
 ---
-<script>
-// import { fetchAndConvertToPdf } from '../utils/markdownToPdf';
-// const url = "/src/content/docs/user-guide/gallery.md";
-// const downloadButton = document.getElementById("downloadButton");
-// downloadButton!.addEventListener('click', () => fetchAndConvertToPdf(url));
 
-// import { convertMainToPdf } from '../utils/markdownToPdf';
-// const downloadButton = document.getElementById("downloadButton");
-// downloadButton!.addEventListener('click', () => convertMainToPdf());
-import { printMarkdown } from '../utils/openInNewTab.ts';
-const downloadButton = document.getElementById("downloadButton");
-downloadButton!.addEventListener('click', () => printMarkdown('/src/content/docs/user-guide/gallery.md'));
+<script>
+  // hide the button if the current page is not a guide
+  let path = window.location.pathname;
+  if (!/guide/.test(path)) {
+    const downloadButton = document.getElementById("downloadButton");
+    downloadButton!.style.display = "none";
+  } else {
+    const downloadButton = document.getElementById("downloadButton");
+    downloadButton!.addEventListener("click", printContent);
+  }
+
+  function printContent() {
+    const mainContent = document.querySelector("main");
+    const originalContent = document.body.innerHTML;
+    const originalFooterDisplay =
+      document.querySelector("footer")?.style.display;
+
+    // Hide the footer
+    const footer = document.querySelector("footer");
+    if (footer) {
+      footer.style.display = "none";
+    }
+
+    document.body.innerHTML = mainContent!.outerHTML;
+
+    setTimeout(() => {
+      window.print();
+      // Restore the original page content and footer display
+      document.body.innerHTML = originalContent;
+      // @ts-ignore
+      document.querySelector("footer").style.display = originalFooterDisplay;
+      // reattach the event listener
+      const downloadButton = document.getElementById("downloadButton");
+      if (downloadButton) {
+        downloadButton.addEventListener("click", printContent);
+      }
+    }, 1000);
+  }
 </script>
 
-<button id="downloadButton" class="bg-indigo-500 text-black">Download</button>
-
-<!-- <script>
-    const fs = require('fs');
-    const { mdToPdf } = require('md-to-pdf');
-    
-    async function convertMarkdownToPdf() {
-      const pdf = await mdToPdf({ path: '/src/content/docs/user-guide/gallery.md' }).catch(console.error);
-    
-      if (pdf) {
-        fs.writeFileSync(pdf.filename, pdf.content);
-      }
-    }
-    
-    // Add event listener to download button
-    document.getElementById('downloadButton')?.addEventListener('click', function() {
-      convertMarkdownToPdf();
-    });
-    </script>
-    
-    <button id="downloadButton" class="bg-indigo-500 text-black">Download</button>
-     -->
+<button
+  id="downloadButton"
+  class="cursor-pointer py-2 px-3 rounded-md flex items-center gap-2 bg-transparent"
+>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="text-gray-800 dark:text-white"
+  >
+    <path
+      d="M8 22.0002H16C18.8284 22.0002 20.2426 22.0002 21.1213 21.1215C22 20.2429 22 18.8286 22 16.0002V15.0002C22 12.1718 22 10.7576 21.1213 9.8789C20.3529 9.11051 19.175 9.01406 17 9.00195M7 9.00195C4.82497 9.01406 3.64706 9.11051 2.87868 9.87889C2 10.7576 2 12.1718 2 15.0002L2 16.0002C2 18.8286 2 20.2429 2.87868 21.1215C3.17848 21.4213 3.54062 21.6188 4 21.749"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"></path>
+    <path
+      d="M12 2L12 15M12 15L9 11.5M12 15L15 11.5"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+</button>
